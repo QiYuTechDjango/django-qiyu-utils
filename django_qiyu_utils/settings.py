@@ -25,6 +25,7 @@ __all__ = [
     "ALLOWED_HOSTS",  # by env
     "LANGUAGE_CODE",  # by env
     "TIME_ZONE",  # by env
+    "USE_TZ",  # always open
     "MEDIA_URL",  # by env
     "MEDIA_ROOT",  # by env
     "STATIC_URL",  # by env
@@ -60,6 +61,8 @@ if isinstance(hosts, str) and hosts != "":
 LANGUAGE_CODE = os.getenv("DJANGO_LANGUAGE_CODE", "zh-Hans")
 
 TIME_ZONE = os.getenv("DJANGO_TIME_ZONE", "Asia/Shanghai")
+
+USE_TZ = True
 
 MEDIA_URL = os.getenv("DJANGO_MEDIA_URL", "media/")
 
