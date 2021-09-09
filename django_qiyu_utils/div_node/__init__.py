@@ -13,8 +13,10 @@ def custom_div_node_helper(name: str, parser: Parser, fn: Callable[[Context], bo
     :param name: 节点的名称
     解析形式如下:
 
+    .. code-blocks: django
+
         {% $name %}
-        # this sub content
+        # this is django html template content
         {% end_$name %}
 
     :param parser: django parser [pass as is]
@@ -23,7 +25,9 @@ def custom_div_node_helper(name: str, parser: Parser, fn: Callable[[Context], bo
               True  -> 渲染子节点
               False -> 不需要渲染子节点
 
-    usage demo:
+    example:
+
+    .. code-blocks: python
 
         from django import template
         register = template.Library()
