@@ -1,8 +1,14 @@
+import warnings
 from typing import Iterable
 
 from django.core.paginator import Paginator, Page
 
 __all__ = ["CustomPaginator"]
+
+warnings.warn(
+    "CustomPage is deprecated use Page.get_elided_page_range method instead",
+    DeprecationWarning,
+)
 
 
 class CustomPage(Page):
