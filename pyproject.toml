@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-qiyu-utils"
-version = "0.4.0"
+version = "0.4.1"
 description = "Django 辅助工具类"
 authors = ["dev <dev@qiyutech.tech>"]
 homepage = "https://oss.qiyutech.tech/"
