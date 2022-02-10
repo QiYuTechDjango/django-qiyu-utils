@@ -33,6 +33,9 @@ __all__ = [
     "STATICFILES_DIRS",
     # 静态文件服务
     "SERVE_FILE_URLS",  # by env
+    # for Django 4.0 this is required
+    # see https://docs.djangoproject.com/en/4.0/ref/settings/#csrf-trusted-origins
+    "CSRF_TRUSTED_ORIGINS",
 ]
 
 # 安全警告: 请不要在线上环境打开 DEBUG
@@ -55,8 +58,15 @@ ALLOWED_HOSTS = ["*"]
 # 多个域名使用 ';' 分隔
 hosts = os.getenv("DJANGO_ALLOWED_HOSTS", None)
 if isinstance(hosts, str) and hosts != "":
-    ALLOWED_HOSTS = hosts.split(";")
+    ALLOWED_HOSTS = list(map(lambda x: x.strip(), hosts.split(";")))
 ##########################################################
+
+# for Django 4.0 this is required
+# see https://docs.djangoproject.com/en/4.0/ref/settings/#csrf-trusted-origins
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1"]
+trusted_origins = os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS", None)
+if isinstance(trusted_origins, str) and trusted_origins.strip() != "":
+    CSRF_TRUSTED_ORIGINS = list(map(lambda x: x.strip(), trusted_origins.split(";")))
 
 LANGUAGE_CODE = os.getenv("DJANGO_LANGUAGE_CODE", "zh-Hans")
 
