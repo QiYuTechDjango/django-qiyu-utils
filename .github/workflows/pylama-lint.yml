@@ -11,6 +11,10 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        py_version: [ "3.9", "3.10", "3.11" ]
+
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: ${{ matrix.py_version }}
 
       - name: Install Pylama
         run: |
